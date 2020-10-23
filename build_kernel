@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+# --------------------------------------------------------------------------------------------
+# This script has been written for the UNIX assignment 2, it will do these following steps:
+# 1. Checkout my repository
+# 2. checkout the raspberry pi linux repository
+# 3. Copy the config file to the correct place
+# 4. Build the kernel
+# 5. Make a backup and store it as a tarball
+# 6. Copy the new files into the right place
+# 7. Reboot the system
+# 
+# Notes:
+# - We assume that we have git installed
+# - We can confirm the installation with uname -r
+# - The shebang above is the best for bash portability
+#
+# By Michael Duy Thong Dao s3668300
+# --------------------------------------------------------------------------------------------
+
+# Define kernel version
+KERNEL=kernel7
+
+# Steps 1 & 2:
+echo "Checkout repositories"
+git clone https://github.com/rmit-s3668300-michaeldao/unix-assignment-2.git
+git clone --depth=1 https://github.com/raspberrypi/linux
+
+# Step 3:
+echo "Copy config to the kernel"
+cp ./unix-assignment-2/.config ./linux/.config
+
+# TODO Consider turning on the performance scripts here
+
+# Step 4:
+echo "Build the kernel"
+cd ./linux 
+make -j4 zImage modules dtbs
+
+# Step 5:
+echo "Backup boot files"
+tar cvzf ../bootBackup.tar.gz /boot/*
+
+# Step 6:
+echo "Copy new files to right place"
+sudo make modules_install
+sudo cp arch/arm/boot/dts/*.dtb /boot/
+sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
+sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
+sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
+
+# Step 7:
+echo "Rebooting, wait for a minute for things to panic"
+sleep 60 
+sudo reboot
+
