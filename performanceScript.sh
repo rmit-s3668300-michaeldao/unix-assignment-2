@@ -40,7 +40,7 @@ function getOutOfMemory() {
 	# 	1. Get Out of memory
 	# 	2. Use awk to isolate the first line and find our output on the 3rd string
 	# 	3. Use tr to remove newline
-	vcgencmd measure_temp | awk 'NR==1{print $3}' | tr -d '\n'
+	vcgencmd mem_oom | awk 'NR==1{print $3}' | tr -d '\n'
 }
 
 function handleTrap() {
