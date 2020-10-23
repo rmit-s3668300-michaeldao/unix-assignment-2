@@ -32,7 +32,7 @@ cp ./unix-assignment-2/.config ./linux/.config
 
 # Step 4:
 echo "Enable our monitoring scripts"
-./unix/performanceScript.sh & perfPID=$!  # track performance script PID
+./unix-assignment-2/performanceScript.sh & perfPID=$!  # track performance script PID
 
 echo "Build the kernel"
 cd ./linux || exit
