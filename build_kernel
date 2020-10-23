@@ -30,12 +30,16 @@ git clone --depth=1 https://github.com/raspberrypi/linux
 echo "Copy config to the kernel"
 cp ./unix-assignment-2/.config ./linux/.config
 
-# TODO Consider turning on the performance scripts here
-
 # Step 4:
+echo "Enable our monitoring scripts"
+./unix/performanceScript.sh & perfPID=$!  # track performance script PID
+
 echo "Build the kernel"
 cd ./linux || exit
 make -j4 zImage modules dtbs
+
+echo "Disable our monitoring scripts"
+kill -USR1 $perfPID
 
 # Step 5:
 echo "Backup boot files"
@@ -53,4 +57,3 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 echo "Rebooting, wait for a minute for things to panic"
 sleep 60 
 sudo reboot
-
