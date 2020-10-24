@@ -41,9 +41,9 @@ do
 
     # Set green led brightness to full to turn it on
     sudo sh -c "echo 255 > /sys/class/leds/led0/brightness"
-    sleep $onTime
+    sleep "$onTime"
 
     # Set green led brightness to 0 to turn it off 
     sudo sh -c "echo 0 > /sys/class/leds/led0/brightness"
-    sleep $offTime
+    sleep "$offTime"
 done
