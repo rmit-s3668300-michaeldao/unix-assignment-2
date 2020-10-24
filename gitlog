@@ -1,0 +1,136 @@
+commit 2b62c91b4d9d833e6c3889c7c7608d50ccd356d3
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 12:42:19 2020 +0100
+
+    update permissions for ledScript
+
+commit 9fbe12b1244267340e59edf1f380cde6727a456f
+Merge: 01a9433 10bb4d8
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 22:39:34 2020 +1100
+
+    Merge branch 'main' of https://github.com/rmit-s3668300-michaeldao/unix-assignment-2 into main
+
+commit 01a94332de2a343e0f52f355fe41726e4f882513
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 22:39:31 2020 +1100
+
+    Add the clock speed graph and the graph report
+
+commit 10bb4d80026b0d41ae7869542d499301fdafe36c
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 12:29:00 2020 +0100
+
+    update kernel_performance_data
+
+commit ca4bd0b737cb1938ea083dce4d5231ae5d50f35d
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 22:05:37 2020 +1100
+
+    Fix accidental png naming
+
+commit bdf4dddff2087b0f7225a761d2f77d645b715ba1
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 22:03:51 2020 +1100
+
+    Add manpage style markdown for scripts
+
+commit 52148c371ede67c45e1fdc68c2e3ba81b7aa39ce
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 21:30:27 2020 +1100
+
+    Additional shellcheck fixes
+
+commit 50f2f322806e04ad449dc005b039fd793b2722d2
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 21:29:15 2020 +1100
+
+    Fix shellcheck errors
+
+commit b5d99b92d7d0dce405f66727c5696940664d5b18
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 21:21:21 2020 +1100
+
+    Create led script
+
+commit e85e5e78a0a7f58080ca0c879b93acc574ec4b2d
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 20:53:52 2020 +1100
+
+    upload graphs of temperature and ring speed
+
+commit 0bdad55b4b96623b48c7a6f2bc79c252f336deb2
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 20:18:05 2020 +1100
+
+    Collect clock speed data as out of memory does not provide enough detail
+
+commit 28acf3ee986febde9fd166db1d6e21363b6dedbd
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 14:33:25 2020 +0100
+
+    push up the first compilation of the kernal monitoring script
+
+commit e6c48e194c628c0e3f3746aa75a3e4f5152abb16
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 00:28:48 2020 +1100
+
+    Fix out of memory in script
+
+commit f96bb636a3c5d291d98448cbdcaa2640748ab416
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 18:37:18 2020 +1100
+
+    Fixing the typo
+
+commit 66ca8ac4d395e11edaaa45436d3e3b10fc672558
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 06:50:32 2020 +0100
+
+    update chmod permissions for scripts
+
+commit 66c3c1bddf69649d52b6989d61d527595843d591
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 16:41:43 2020 +1100
+
+    Create and enable performance script in our build_kernel script (check desc)
+    
+    Accidentally pushed under my personal account, reverting and repushing under my student account
+
+commit abe5e8dcb27ad2c9f51af9c4ced293d7792f6236
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 16:40:44 2020 +1100
+
+    Revert "Create and enable performance script in our build_kernel script"
+    
+    This reverts commit aab6a66db3599a4cb277e10e1b893191e2e1c2fd.
+
+commit aab6a66db3599a4cb277e10e1b893191e2e1c2fd
+Author: michaeldao <mifrent@hotmail.com>
+Date:   Fri Oct 23 16:37:13 2020 +1100
+
+    Create and enable performance script in our build_kernel script
+
+commit 3f723d21ff62ab2729385bee3b17dfd53fd73c9b
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 05:32:53 2020 +0100
+
+    validate script with shellcheck
+
+commit b336ca702e7852e28245ced4953b24e5e2a1b013
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 05:28:06 2020 +0100
+
+    create build_kernel script
+
+commit 67b7743fe4a99340b9c6f08fb71ce4370a63074e
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Fri Oct 23 04:39:49 2020 +0100
+
+    Add the kernel configuration
+
+commit 4bfbec07f3360c7e44e270322954a3a76d69ce5a
+Author: Michael Dao <31052869+rmit-s3668300-michaeldao@users.noreply.github.com>
+Date:   Fri Oct 23 14:37:50 2020 +1100
+
+    Initial commit
