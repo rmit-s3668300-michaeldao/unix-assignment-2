@@ -14,7 +14,10 @@
 # By Michael Duy Thong Dao s3668300
 # --------------------------------------------------------------------------------------------
 
-# Internal var
+TOP=/usr/bin/top
+AWK=/usr/bin/awk
+SED=/bin/sed
+GREP=/bin/grep
 USR2Exit=0
 
 # Called on USR2 trap to exit
@@ -30,11 +33,11 @@ while [ "$USR2Exit" -eq "0" ];
 do
     # Get cpu load, sourced from:
     # https://stackoverflow.com/questions/9229333/how-to-get-overall-cpu-usage-e-g-57-on-linux
-    cpuUsage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
+    cpuUsage=$($TOP -bn1 | $GREP "Cpu(s)" | $SED "s/.*, *\([0-9.]*\)%* id.*/\1/" | $AWK '{print 100 - $1"%"}')
     
     # get time to keep on our blinks according to cpuUsage
-    onTime=$(echo "$cpuUsage" | awk '{ print $cpu_usage/100 }')
-    offTime=$(echo "$onTime" | awk '{ print 1-$onTime }')
+    onTime=$(echo "$cpuUsage" | $AWK '{ print $cpu_usage/100 }')
+    offTime=$(echo "$onTime" | $AWK '{ print 1-$onTime }')
 
     # Set green led brightness to full to turn it on
     sudo sh -c "echo 255 > /sys/class/leds/led0/brightness"

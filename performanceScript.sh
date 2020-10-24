@@ -18,13 +18,16 @@
 # Declare some variables to assist us
 outputFile="kernel_performance_data"
 USR1Exit=0
+VCGENCMD=/usr/bin/vcgencmd
+AWK=/usr/bin/awk
+TR=/usr/bin/tr
 
 function getTemperature() {
 	# We are reading temperature gathered from the onboard sensor:
 	# 	1. Get temperature output with vcgencmd
 	# 	2. Use awk to remove "temp=" and "'C" from output
 	# 	3. Use tr to remove newline
-	vcgencmd measure_temp | awk -F '=' '{ print $2 }' | awk -F "'" '{ print $1 }' | tr -d '\n'
+	$VCGENCMD measure_temp | $AWK -F '=' '{ print $2 }' | $AWK -F "'" '{ print $1 }' | $TR -d '\n'
 }
 
 function getRingOscVoltage() {
@@ -32,7 +35,7 @@ function getRingOscVoltage() {
 	# 	1. Get ring oscillator output with vcgencmd
 	# 	2. Use awk to isolate the voltage value from the output
 	# 	3. Use tr to remove newline
-	vcgencmd read_ring_osc | awk -F '=' '{ print $2 }' | awk -F 'MHz' '{ print $1 }' | tr -d '\n'
+	$VCGENCMD read_ring_osc | $AWK -F '=' '{ print $2 }' | $AWK -F 'MHz' '{ print $1 }' | $TR -d '\n'
 }
 
 function getClockSpeed() {
@@ -40,7 +43,7 @@ function getClockSpeed() {
 	# 	1. Get clock speed from arm block
 	# 	2. Use awk to isolate the value from output
 	# 	3. Use tr to remove newline
-	vcgencmd measure_clock arm | awk -F '=' '{ print $2 }' | tr -d '\n'
+	$VCGENCMD measure_clock arm | $AWK -F '=' '{ print $2 }' | $TR -d '\n'
 }
 
 function handleTrap() {

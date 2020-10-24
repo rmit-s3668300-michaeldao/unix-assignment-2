@@ -18,13 +18,14 @@
 # By Michael Duy Thong Dao s3668300
 # --------------------------------------------------------------------------------------------
 
-# Define kernel version
 KERNEL=kernel7
+GIT=/usr/bin/git
 
 # Steps 1 & 2:
 echo "Checkout repositories"
-git clone https://github.com/rmit-s3668300-michaeldao/unix-assignment-2.git
-git clone --depth=1 https://github.com/raspberrypi/linux
+$GIT clone git@github.com:rmit-s3668300-michaeldao/unix-assignment-2.git
+
+$GIT clone --depth=1 https://github.com/raspberrypi/linux
 
 # Step 3:
 echo "Copy config to the kernel"
