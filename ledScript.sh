@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 # --------------------------------------------------------------------------------------------
 # This script has been written for the UNIX assignment 2, it is responsible for controlling

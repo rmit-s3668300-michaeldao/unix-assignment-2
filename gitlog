@@ -1,3 +1,45 @@
+commit cf5ec2881ed1238274e7865b424d92a488b36cb0
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 13:22:43 2020 +0100
+
+    there are some places i cant satisfy shellcheck, but this will do
+
+commit d955315bbd482d8d58dffe1a4abf30f25c557874
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 13:20:22 2020 +0100
+
+    confirm it works
+
+commit b99c98751eb6328a023e2864f704f0db4fb350b3
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 23:09:47 2020 +1100
+
+    Remove functions because of shellcheck
+
+commit 010c2d76dc81ce0df822a5743d81d131af4318b9
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 23:06:18 2020 +1100
+
+    Fix function error in shellcheck
+
+commit 11ae3e9f3c8eced67d9548183d632dd7918ed960
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 23:01:47 2020 +1100
+
+    Shellcheck is complaining, make some more changes
+
+commit 9f0b94290b4768523e817275962c992da42a2245
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 22:58:20 2020 +1100
+
+    Make changes according to the faq
+
+commit cc774cc8dd70047327d2d6a016f3db06f5606939
+Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
+Date:   Sat Oct 24 12:43:50 2020 +0100
+
+    add final git log
+
 commit 2b62c91b4d9d833e6c3889c7c7608d50ccd356d3
 Author: rmit-s3668300-michaeldao <s3668300@student.rmit.edu.au>
 Date:   Sat Oct 24 12:42:19 2020 +0100
