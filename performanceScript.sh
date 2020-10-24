@@ -49,7 +49,7 @@ do
 	clockSpeed=$($VCGENCMD measure_clock arm | $AWK -F "=" "{ print $2 }" | $TR -d "\n")
 
 	# Append our performance logs to the output file based on every second that passes
-	echo -e "${SECONDS}\t$( $temperature )\t$( $ringOscVoltage )\t$( $clockSpeed )\n" >> $outputFile
+	echo -e "${SECONDS}\t$temperature\t$ringOscVoltage\t$clockSpeed\n" >> $outputFile
 
 	# Wait one tick
 	sleep 1

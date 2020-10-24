@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#/usr/bin/env bash
 
 # --------------------------------------------------------------------------------------------
 # This script has been written for the UNIX assignment 2, it is responsible for controlling
@@ -33,7 +33,7 @@ while [ "$USR2Exit" -eq "0" ];
 do
     # Get cpu load, sourced from:
     # https://stackoverflow.com/questions/9229333/how-to-get-overall-cpu-usage-e-g-57-on-linux
-    cpuUsage=$($TOP -bn1 | $GREP "Cpu(s)" | $SED "s/.*, *\([0-9.]*\)%* id.*/\1/" | $AWK "{print 100 - $1'%'}")
+    cpuUsage=$($TOP -bn1 | $GREP "Cpu(s)" | $SED "s/.*, *\([0-9.]*\)%* id.*/\1/" | $AWK '{print 100 - $1}')
     
     # get time to keep on our blinks according to cpuUsage
     onTime=$(echo "$cpuUsage" | $AWK "{ print $cpuUsage/100 }")
@@ -41,9 +41,9 @@ do
 
     # Set green led brightness to full to turn it on
     sudo sh -c "echo 255 > /sys/class/leds/led0/brightness"
-    sleep "$onTime"
+    sleep $onTime
 
     # Set green led brightness to 0 to turn it off 
     sudo sh -c "echo 0 > /sys/class/leds/led0/brightness"
-    sleep "$offTime"
+    sleep $offTime
 done
