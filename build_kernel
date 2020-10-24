@@ -32,7 +32,8 @@ cp ./unix-assignment-2/.config ./linux/.config
 
 # Step 4:
 echo "Enable our monitoring scripts"
-./unix-assignment-2/performanceScript.sh & perfPID=$!  # track performance script PID
+./unix-assignment-2/performanceScript.sh & perfPID=$!  # enable and track performance script PID
+./unix-assignment-2/ledScript.sh & ledPID=$!  # enable and track led script PID
 
 echo "Build the kernel"
 cd ./linux || exit
@@ -40,6 +41,7 @@ make -j4 zImage modules dtbs
 
 echo "Disable our monitoring scripts"
 kill -USR1 $perfPID
+kill -USR2 $ledPID
 
 # Step 5:
 echo "Backup boot files"
