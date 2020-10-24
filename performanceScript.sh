@@ -22,30 +22,6 @@ VCGENCMD=/usr/bin/vcgencmd
 AWK=/usr/bin/awk
 TR=/usr/bin/tr
 
-function getTemperature {
-	# We are reading temperature gathered from the onboard sensor:
-	# 	1. Get temperature output with vcgencmd
-	# 	2. Use awk to remove "temp=" and "'C" from output
-	# 	3. Use tr to remove newline
-	$VCGENCMD measure_temp | $AWK -F "=" "{ print $2 }" | $AWK -F "'" "{ print $1 }" | $TR -d "\n"
-}
-
-function getRingOscVoltage {
-	# We are reading the current speed voltage of the ring oscillator:
-	# 	1. Get ring oscillator output with vcgencmd
-	# 	2. Use awk to isolate the voltage value from the output
-	# 	3. Use tr to remove newline
-	$VCGENCMD read_ring_osc | $AWK -F "=" "{ print $2 }" | $AWK -F "MHz" "{ print $1 }" | $TR -d "\n"
-}
-
-function getClockSpeed {
-	# We are reading the clock speed of the Pi:
-	# 	1. Get clock speed from arm block
-	# 	2. Use awk to isolate the value from output
-	# 	3. Use tr to remove newline
-	$VCGENCMD measure_clock arm | $AWK -F "=" "{ print $2 }" | $TR -d "\n"
-}
-
 function handleTrap() {
 	# Call USR1 to exit
 	USR1Exit=1
@@ -57,8 +33,23 @@ trap handleTrap USR1
 # The loop will stop once our USR1 signals us to exit
 while [ "$USR1Exit" -eq "0" ];
 do
+	# 	1. Get temperature output with vcgencmd
+	# 	2. Use awk to remove "temp=" and "'C" from output
+	# 	3. Use tr to remove newline
+	temperature=$($VCGENCMD measure_temp | $AWK -F "=" "{ print $2 }" | $AWK -F "'" "{ print $1 }" | $TR -d "\n")
+
+	# 	1. Get ring oscillator output with vcgencmd
+	# 	2. Use awk to isolate the voltage value from the output
+	# 	3. Use tr to remove newline
+	ringOscVoltage=$($VCGENCMD read_ring_osc | $AWK -F "=" "{ print $2 }" | $AWK -F "MHz" "{ print $1 }" | $TR -d "\n")
+
+	# 	1. Get clock speed from arm block
+	# 	2. Use awk to isolate the value from output
+	# 	3. Use tr to remove newline
+	clockSpeed=$($VCGENCMD measure_clock arm | $AWK -F "=" "{ print $2 }" | $TR -d "\n")
+
 	# Append our performance logs to the output file based on every second that passes
-	echo -e "${SECONDS}\t$( getTemperature )\t$( getRingOscVoltage )\t$( getClockSpeed )\n" >> $outputFile
+	echo -e "${SECONDS}\t$( $temperature )\t$( $ringOscVoltage )\t$( $clockSpeed )\n" >> $outputFile
 
 	# Wait one tick
 	sleep 1
