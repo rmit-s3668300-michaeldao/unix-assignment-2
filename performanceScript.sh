@@ -22,7 +22,7 @@ VCGENCMD=/usr/bin/vcgencmd
 AWK=/usr/bin/awk
 TR=/usr/bin/tr
 
-function getTemperature() {
+function getTemperature {
 	# We are reading temperature gathered from the onboard sensor:
 	# 	1. Get temperature output with vcgencmd
 	# 	2. Use awk to remove "temp=" and "'C" from output
@@ -30,7 +30,7 @@ function getTemperature() {
 	$VCGENCMD measure_temp | $AWK -F "=" "{ print $2 }" | $AWK -F "'" "{ print $1 }" | $TR -d "\n"
 }
 
-function getRingOscVoltage() {
+function getRingOscVoltage {
 	# We are reading the current speed voltage of the ring oscillator:
 	# 	1. Get ring oscillator output with vcgencmd
 	# 	2. Use awk to isolate the voltage value from the output
@@ -38,7 +38,7 @@ function getRingOscVoltage() {
 	$VCGENCMD read_ring_osc | $AWK -F "=" "{ print $2 }" | $AWK -F "MHz" "{ print $1 }" | $TR -d "\n"
 }
 
-function getClockSpeed() {
+function getClockSpeed {
 	# We are reading the clock speed of the Pi:
 	# 	1. Get clock speed from arm block
 	# 	2. Use awk to isolate the value from output
