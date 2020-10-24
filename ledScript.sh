@@ -33,11 +33,11 @@ while [ "$USR2Exit" -eq "0" ];
 do
     # Get cpu load, sourced from:
     # https://stackoverflow.com/questions/9229333/how-to-get-overall-cpu-usage-e-g-57-on-linux
-    cpuUsage=$($TOP -bn1 | $GREP "Cpu(s)" | $SED "s/.*, *\([0-9.]*\)%* id.*/\1/" | $AWK '{print 100 - $1"%"}')
+    cpuUsage=$($TOP -bn1 | $GREP "Cpu(s)" | $SED "s/.*, *\([0-9.]*\)%* id.*/\1/" | $AWK "{print 100 - $1"%"}")
     
     # get time to keep on our blinks according to cpuUsage
-    onTime=$(echo "$cpuUsage" | $AWK '{ print $cpu_usage/100 }')
-    offTime=$(echo "$onTime" | $AWK '{ print 1-$onTime }')
+    onTime=$(echo "$cpuUsage" | $AWK "{ print $cpu_usage/100 }")
+    offTime=$(echo "$onTime" | $AWK "{ print 1-$onTime }")
 
     # Set green led brightness to full to turn it on
     sudo sh -c "echo 255 > /sys/class/leds/led0/brightness"
