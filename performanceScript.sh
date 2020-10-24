@@ -7,7 +7,7 @@
 # The metrics that will be measured are:
 # 1. Temperature
 # 2. Speed Voltage of ring oscillator
-# 3. Out of memory events
+# 3. Clock speed
 #
 # Notes:
 # - The shebang above is the best for bash portability
@@ -35,12 +35,12 @@ function getRingOscVoltage() {
 	vcgencmd read_ring_osc | awk -F '=' '{ print $2 }' | awk -F 'MHz' '{ print $1 }' | tr -d '\n'
 }
 
-function getOutOfMemory() {
-	# We are reading the amount of times we hit Out Of Memory events in the VC4 memory:
-	# 	1. Get Out of memory
-	# 	2. Use awk to isolate the first line and find our output on the 3rd string
+function getClockSpeed() {
+	# We are reading the clock speed of the Pi:
+	# 	1. Get clock speed from arm block
+	# 	2. Use awk to isolate the value from output
 	# 	3. Use tr to remove newline
-	vcgencmd mem_oom | awk 'NR==1{print $3}' | tr -d '\n'
+	vcgencmd measure_clock arm | awk -F '=' '{ print $2 }' | tr -d '\n'
 }
 
 function handleTrap() {
@@ -55,7 +55,7 @@ trap handleTrap USR1
 while [ "$USR1Exit" -eq "0" ];
 do
 	# Append our performance logs to the output file based on every second that passes
-	echo -e "${SECONDS}\t$( getTemperature )\t$( getRingOscVoltage )\t$( getOutOfMemory )\n" >> $outputFile
+	echo -e "${SECONDS}\t$( getTemperature )\t$( getRingOscVoltage )\t$( getClockSpeed )\n" >> $outputFile
 
 	# Wait one tick
 	sleep 1
