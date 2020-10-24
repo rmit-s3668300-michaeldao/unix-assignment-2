@@ -33,8 +33,8 @@ do
     cpuUsage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
     
     # get time to keep on our blinks according to cpuUsage
-    onTime=$(echo $cpuUsage | awk '{ print $cpu_usage/100 }')
-    offTime=$(echo $onTime | awk '{ print 1-$onTime }')
+    onTime=$(echo "$cpuUsage" | awk '{ print $cpu_usage/100 }')
+    offTime=$(echo "$onTime" | awk '{ print 1-$onTime }')
 
     # Set green led brightness to full to turn it on
     sudo sh -c "echo 255 > /sys/class/leds/led0/brightness"
